@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Student Management System</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	
+	
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">Student Management System</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/students}">student management</a>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	
+	<div class="container">
+		<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+			<h1 class="text-center">Update Student</h1>
+			<div class="card-body">
+				<!--here @ represents the context path of your aplication
+			and {/students} is request url we need to handle in controller and method is POST
+			and ${student} represents the key of the object passed through the model in controller-->
+				<form th:action="@{/students/{id}(id=${student.id})}" th:object="${student}" method="POST">
+					<div class="form-group">
+						<label>Student First name</label>
+						<input th:field="*{firstName}"  
+						type="text" name="firstName" class="form-control"
+							placeholder="Enter Student First Name" />
+					</div>
+					<div class="form-group">
+						<label>Student Last name</label>
+						<input th:field="*{lastName}"
+						type="text" name="lastName" class="form-control"
+							placeholder="Enter Student Last Name" />
+					</div>
+					<div class="form-group">
+						<label>Student Email</label>
+						<input th:field="*{email}"
+						 type="email" name="email" class="form-control"
+							placeholder="Enter Student Email" />
+					</div>
+					<div class="box-footer">
+						<button type="submit" class="btn btn-primary ">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
